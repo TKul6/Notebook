@@ -1,0 +1,3 @@
+- Node's process object has an event emitter which listen to the uncoughtexception event. this allow the user to catch any exception, however using this function means the Node is still running probably in a unwanted state so it's best to shut the program after logging the exceptions.
+
+- If you want to cast a Buffer into a string you shoulf use the String Decoder library provided by node. this tool knows how to convert the byre array to string more smart wsay with the most expected results.

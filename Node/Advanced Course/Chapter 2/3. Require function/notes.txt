@@ -1,0 +1,5 @@
+- You can console log the module object to find where all the modules are loaded from and which modules are loaded in the first level (modules require by the main program).
+
+- Node tries to resolve every module from the 'node_modules' on the app directoy, if it can't find the module it goes to the parent directory and search in the 'node_modules' folder then, if it can not find the module it goes up another directory and do it again and again and again.
+
+- If the module is not a js file but a folder. node will search for the 'main' js file according to the package resgitry in the packages.json file, which defaults to 'index.js'

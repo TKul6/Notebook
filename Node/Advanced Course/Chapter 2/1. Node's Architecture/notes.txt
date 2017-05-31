@@ -1,0 +1,6 @@
+- Node is agnostic to the JS engine that runs it's code. V8 is the most common and vastly used engine. However Node can be run on Chackra (Mocrosoft Edge's JS engine) as well.
+
+- Node features are divided to 3 subcategories:
+	-Shipped: stable feature that come with node and enabled by defaults.
+	- Staged: Experimental features (in Beta stage) those features comes with node but they are disabled by default. to enable them you should used the --harmony flag when calling node.
+	- In progress: features that are not completely finished.
