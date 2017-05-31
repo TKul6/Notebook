@@ -1,0 +1,10 @@
+- Node is agnostic to the JS engine that runs it's code. V8 is the most common and vastly used engine. However Node can be run on Chackra (Mocrosoft Edge's JS engine) as well.
+
+- Node features are divided to 3 subcategories:
+	-Shipped: stable feature that come with node and enabled by defaults.
+	- Staged: Experimental features (in Beta stage) those features comes with node but they are disabled by default. to enable them you should used the --harmony flag when calling node.
+	- In progress: features that are not completely finished.
+
+- Node's process object has an event emitter which listen to the uncoughtexception event. this allow the user to catch any exception, however using this function means the Node is still running probably in a unwanted state so it's best to shut the program after logging the exceptions.
+
+- If you want to cast a Buffer into a string you shoulf use the String Decoder library provided by node. this tool knows how to convert the byre array to string more smart wsay with the most expected results.
