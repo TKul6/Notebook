@@ -1,5 +1,4 @@
-var myModule = require('my-module');
+var moduleA = require('module-a');
 
 
-
-console.log();
+console.log(moduleA);
