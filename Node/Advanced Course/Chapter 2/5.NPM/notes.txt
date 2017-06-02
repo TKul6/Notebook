@@ -1,0 +1,5 @@
+npm i --dry-run // will log to the console what would be install without actually installing it.
+npm install --optional // install an optional dependency which may not be absolutly require in production.
+npm outdated // Checks if one or more dependencies are outdated.
+npm home [package id] // opens the home page of the package.
+npm repo [package id] // opens the repository page of the package.
