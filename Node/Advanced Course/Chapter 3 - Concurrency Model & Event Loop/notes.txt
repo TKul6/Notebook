@@ -1,0 +1,40 @@
+The Node's concurrency model is built using the Event Loop mechanisem.
+
+The Event Loop goal is to keep the code running and prevent from heavy I/O operations to make the code "wait" for the replay.
+
+This Method has 5 main players:
+
+The CallStack - which contains all the method calls to that executing at a specific time.
+The EventQueue - a Queue that conatins all the user's callbacks to execute after a heavy operation.
+The EventLoop - a method that listens to the CallStack and once it is empty start reading from the EventQueue all the callbacks and executing them.
+ (transferring them to the CallStack).
+An heavy operation library - this may be a library that works with the OS like libuv or the network. this library gets the operation to invoke
+ (the real operation and not the callback). and invokes it.
+Node engine - The engine that keeps track on all the heavey operations and once an operation is completed it inserts the operations' callback to the EventQueue.
+
+The Process:
+
+When executing an heavy operation (reading a file from the disk for example). the user call the function with a callback.
+- The function is pused into the CallStack.
+- Nodes call to  a third part library to invokes the desired operation.
+- The function gets poped from the CallStack (which means the user's code continue to run).
+
+
+In a certain point of time the third party library completed the operation, then:
+- Nodes gets the operation's callback (provided by the user) and insert it to the EventQueue.
+- The EventLoop waiting for the callstack to be empty (from executing the current operations).
+- Once the CallStack is empty, The EventLoop dequeues all the callbacks from the EventQueue one by one and executing them 
+(transferring to the JS engine that pushed them to the callstack).
+
+The EventLoop handle the callbacks by priority (Network calls take precedence over operation ect').
+
+Nodes has 3 types of timers:
+
+setTimer : which gets a function to invoke and a minumum time to wait.
+ (This function just wait the given amount of time and then adds the callback to the EventQueue. Which means it may take more than the given time).
+
+ SetImmidiate: Gets a callback and and queue it  in the EventQueue (SetImmidiate callbacks take precedence over setTimer).
+
+ process.NextTick - Gets a callback and execute it after the CallStack is completed and ampty and before the EventLoop kicks in.
+
+
