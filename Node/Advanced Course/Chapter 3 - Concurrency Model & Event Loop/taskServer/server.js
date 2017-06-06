@@ -14,9 +14,6 @@ class Server extends EventEmitter{
 
    
     add(args) {
-
-console.log(args);
-
         this.tasks[this.current_id] = args.join(' ');
 
         this.emit('response', `Task ${this.current_id} was added.`);
